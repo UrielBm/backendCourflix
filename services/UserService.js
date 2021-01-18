@@ -9,8 +9,8 @@ class UserService {
     const query = User.findOne({ _id: id }).exec();
     return query;
   }
-  getUserByName(name) {
-    const query = User.findOne({ name }).exec();
+  getUserByemail(email) {
+    const query = User.findOne({ email }).exec();
     return query;
   }
   insertUser(user) {

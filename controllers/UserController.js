@@ -61,9 +61,10 @@ class UserController {
   async postUser(req, res) {
     const { name, password } = req.body;
     const user = req.body;
-    if (name && password) {
+    const email = user.email.toLowerCase();
+    if (name && email && password) {
       try {
-        await this.userService.insertUser(user);
+        await this.userService.insertUser({ ...user, email });
         res.status(200).send(`registro hecho correctamente`);
       } catch (e) {
         res.status(500).send(`Server error, type ${e}`);

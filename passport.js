@@ -6,12 +6,12 @@ const UserInstance = new InstanceUser();
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "name",
+      usernameField: "email",
       passwordField: "password",
     },
-    async (username, password, cb) => {
+    async (email, password, cb) => {
       try {
-        const userData = await UserInstance.getUserByName(username);
+        const userData = await UserInstance.getUserByemail(email);
         console.log(userData);
         if (!userData) {
           console.log(`usuario no existe`);
@@ -38,10 +38,10 @@ passport.use(
 );
 
 passport.serializeUser((user, cb) => {
-  cb(null, user.name);
+  cb(null, user.email);
 });
 
-passport.deserializeUser(async (name, cb) => {
-  const data = await UserInstance.getUserByName(name);
+passport.deserializeUser(async (email, cb) => {
+  const data = await UserInstance.getUserByemail(email);
   cb(null, data);
 });
