@@ -12,9 +12,7 @@ passport.use(
     async (email, password, cb) => {
       try {
         const userData = await UserInstance.getUserByemail(email);
-        console.log(userData);
         if (!userData) {
-          console.log(`usuario no existe`);
           cb(null, false);
         }
         const comparePassword = await bcrypt.compare(
@@ -22,15 +20,12 @@ passport.use(
           userData.password
         );
         if (!comparePassword) {
-          console.log(`contraseña incorrecta`);
           return cb(null, false);
         }
-        console.log(`todo ok`);
         // todo ok
         cb(null, userData);
       } catch (e) {
         //error
-        console.log(e);
         cb(null, false);
       }
     }
