@@ -48,7 +48,6 @@ class MovieController {
   async postAMovie(req, res) {
     const { body } = req;
     const image = req.file.filename;
-    console.log(req.file);
     const name = body.name.toLowerCase();
     const movie = req.body;
     if (body.name && image) {
