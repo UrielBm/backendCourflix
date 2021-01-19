@@ -30,21 +30,32 @@ class UserController {
       const user = await this.userService.getUserById(id);
       if (user.favMovie && user.favMovie != "") {
         const favMovie = await this.movieService.getMovieByName(user.favMovie);
-        const data = {
-          id: user._id,
-          name: user.name,
-          favMovie: user.favMovie,
-          isAdmin: user.isAdmin,
-          movie: {
-            id: favMovie._id,
-            name: favMovie.name,
-            category: favMovie.category,
-            type: favMovie.type,
-            image: favMovie.image,
-            source: favMovie.source,
-          },
-        };
-        res.status(200).json(data);
+        if (favMovie != null) {
+          const data = {
+            id: user._id,
+            name: user.name,
+            favMovie: user.favMovie,
+            isAdmin: user.isAdmin,
+            movie: {
+              id: favMovie._id,
+              name: favMovie.name,
+              category: favMovie.category,
+              type: favMovie.type,
+              image: favMovie.image,
+              source: favMovie.source,
+            },
+          };
+          res.status(200).json(data);
+        } else {
+          const data = {
+            id: user._id,
+            name: user.name,
+            favMovie: user.favMovie,
+            isAdmin: user.isAdmin,
+            movie: `no found in the data base`,
+          };
+          res.status(200).json(data);
+        }
       } else {
         const data = {
           id: user._id,
