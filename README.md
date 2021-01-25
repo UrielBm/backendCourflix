@@ -73,4 +73,4 @@ Para hacer un registro de película EXITOSAMENTE debes de:
 
 **_para hacer deletes debes de conocer el id de usuarios o películas para eliminar_**
 
-**_para los endponits de visualizar users y movies existe un páginado cade 7 usuarios o películas, para acceder a ellos ocupa ?pag= número de página en la url_**
+**_para los endponits de visualizar users y movies existe un paginado cade 7 usuarios o películas, para acceder a ellos ocupa ?pag= número de página en la url_**
