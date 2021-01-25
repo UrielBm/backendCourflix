@@ -1,9 +1,9 @@
 # Api de courflix proyecto back-end en javascript
 
-esta es una Api de prueba realizada con Node.js y el framework de Express para evaluar y experminar los conocimintos del lenguaje de JavaScript.
+-esta es una Api de prueba realizada con Node.js y el framework de Express para evaluar y probar los conocimientos del lenguaje de JavaScript.
 
-Realizada por : Uriel Benítez Medina ;)
-github [link de GitHub](https://github.com/UrielBm)
+-Realizada por : Uriel Benítez Medina ;)
+-Github [link de GitHub](https://github.com/UrielBm)
 
 ## Demo
 
@@ -69,8 +69,8 @@ Para hacer un registro de película EXITOSAMENTE debes de:
 "type": "movie" o "serie" ***NO REQUERIDO***
 ```
 
-**_Para hacer upadtes de usuarios o péliculas necesitas el id y los capos a actulizar_**
+**_Para hacer updates de usuarios o películas necesitas el id y los campos para actulizar_**
 
 **_para hacer deletes debes de conocer el id de usuarios o películas para eliminar_**
 
-**_para los endponits de visualizar users y movies existe un páginado cade 7 usuarios o películas para acceder a ellos ocupa ?pag= número de página en la url_**
+**_para los endponits de visualizar users y movies existe un páginado cade 7 usuarios o películas, para acceder a ellos ocupa ?pag= número de página en la url_**
