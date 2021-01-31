@@ -11,12 +11,13 @@ class MovieController {
     try {
       const response = await this.movieServices.getMovies(offset);
       const movies = response.map(
-        ({ _id, name, image, category, type, source }) => {
+        ({ _id, name, image, category, type, description, source }) => {
           return {
             id: _id,
             name: name,
             category: category,
             type: type,
+            desc: description,
             image: image,
             source: source,
           };
