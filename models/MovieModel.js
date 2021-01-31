@@ -18,6 +18,10 @@ const MovieShema = mongoose.Schema({
     enum: ["movie", "serie"],
     default: "movie",
   },
+  description: {
+    type: String,
+    required: true,
+  },
   source: {
     type: String,
     default: "",

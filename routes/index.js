@@ -52,10 +52,10 @@ router.post(
     IntanceMovie.postAMovie(req, res);
   }
 );
-router.get("/movie/:id", checkAutenticado, (req, res, next) => {
+router.get("/movie/:id", (req, res, next) => {
   IntanceMovie.getMovieById(req, res);
 });
-router.get("/movies", checkAutenticado, (req, res, next) => {
+router.get("/movies", (req, res, next) => {
   IntanceMovie.getMovies(req, res);
 });
 router.post("/login", passport.authenticate("local"), (req, res) => {
