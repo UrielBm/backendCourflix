@@ -19,7 +19,7 @@ app.set("port", port);
  */
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://admin:<L4C0ntr4Señ43s3lNum3r07122>@cluster0.itnyl.mongodb.net/<courflix>?retryWrites=true&w=majority",
+  "mongodb+srv://admin:L4C0ntr4Señ43s3lNum3r07122@cluster0.itnyl.mongodb.net/courflix?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
