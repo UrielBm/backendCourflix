@@ -59,6 +59,7 @@ class MovieController {
         name: name,
         category: category,
         type: type,
+        desc: description,
         image: image,
         source: source,
       };
