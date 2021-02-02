@@ -55,6 +55,9 @@ router.post(
 router.get("/movie/:id", (req, res, next) => {
   IntanceMovie.getMovieById(req, res);
 });
+router.get("/series", (req, res, next) => {
+  IntanceMovie.getSeries(req, res);
+});
 router.get("/movies", (req, res, next) => {
   IntanceMovie.getMovies(req, res);
 });

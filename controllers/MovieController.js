@@ -28,6 +28,27 @@ class MovieController {
       res.status(500).send(`Server Error, type : ${e}`);
     }
   }
+  async getSeries(req, res) {
+    try {
+      const response = await this.movieServices.getSeries();
+      const series = response.map(
+        ({ _id, name, image, category, type, description, source }) => {
+          return {
+            id: _id,
+            name: name,
+            category: category,
+            type: type,
+            desc: description,
+            image: image,
+            source: source,
+          };
+        }
+      );
+      res.status(200).json(series);
+    } catch (e) {
+      res.status(500).send(`Server Error, type : ${e}`);
+    }
+  }
   async getMovieById(req, res) {
     try {
       const { id } = req.params;

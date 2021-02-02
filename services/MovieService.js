@@ -3,7 +3,11 @@ const Movie = require("./../models/MovieModel");
 
 class MovieService {
   getMovies(pag) {
-    const query = Movie.find().skip(pag).limit(7).exec();
+    const query = Movie.find({ type: "movie" }).skip(pag).limit(7).exec();
+    return query;
+  }
+  getSeries() {
+    const query = Movie.find({ type: "serie" }).exec();
     return query;
   }
   getMovieByName(name) {
