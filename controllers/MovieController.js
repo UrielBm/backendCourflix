@@ -53,7 +53,15 @@ class MovieController {
     try {
       const { id } = req.params;
       const response = await this.movieServices.getMovieById(id);
-      const { _id, name, category, type, image, source } = response;
+      const {
+        _id,
+        name,
+        category,
+        type,
+        description,
+        image,
+        source,
+      } = response;
       const movie = {
         id: _id,
         name: name,
