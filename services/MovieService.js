@@ -1,4 +1,3 @@
-const { findOne } = require("./../models/MovieModel");
 const Movie = require("./../models/MovieModel");
 
 class MovieService {

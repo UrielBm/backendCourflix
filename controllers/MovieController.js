@@ -1,6 +1,7 @@
 class MovieController {
-  constructor(movieServices) {
+  constructor(movieServices, seasonServices) {
     this.movieServices = movieServices;
+    this.seasonServices = seasonServices;
   }
   async getMovies(req, res) {
     const { pag } = req.query;
@@ -53,25 +54,41 @@ class MovieController {
     try {
       const { id } = req.params;
       const response = await this.movieServices.getMovieById(id);
-      const {
-        _id,
-        name,
-        category,
-        type,
-        description,
-        image,
-        source,
-      } = response;
-      const movie = {
-        id: _id,
-        name: name,
-        category: category,
-        type: type,
-        desc: description,
-        image: image,
-        source: source,
-      };
-      res.status(200).json(movie);
+      if (response.type == "movie") {
+        const {
+          _id,
+          name,
+          category,
+          type,
+          description,
+          image,
+          source,
+        } = response;
+        const movie = {
+          id: _id,
+          name: name,
+          category: category,
+          type: type,
+          desc: description,
+          image: image,
+          source: source,
+        };
+        res.status(200).json(movie);
+      } else {
+        const seasonResponse = await this.seasonServices.getSeason(
+          response._id
+        );
+        const serie = {
+          id: response._id,
+          name: response.name,
+          category: response.category,
+          type: response.type,
+          desc: response.description,
+          image: response.image,
+          seasons: seasonResponse,
+        };
+        res.status(200).json(serie);
+      }
     } catch (e) {
       res.status(500).send(`Server Error, type ${e}`);
     }

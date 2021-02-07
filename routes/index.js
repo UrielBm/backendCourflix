@@ -3,8 +3,10 @@ const router = express.Router();
 const passport = require("passport");
 const UserController = require("./../controllers/UserController");
 const MovieController = require("./../controllers/MovieController");
+const SeasonController = require("./../controllers/SeasonController");
 const UserService = require("./../services/UserService");
 const MovieService = require("./../services/MovieService");
+const SeasonService = require("./../services/SeasonServices");
 const checkAdmin = require("./../utils/checkAdmin");
 const checkAutenticado = require("./../utils/checkAutenticado");
 const multer = require("multer");
@@ -20,7 +22,11 @@ const storage = multer.diskStorage({
 const pictureMovie = multer({ storage: storage });
 
 const IntanceUser = new UserController(new UserService(), new MovieService());
-const IntanceMovie = new MovieController(new MovieService());
+const IntanceMovie = new MovieController(
+  new MovieService(),
+  new SeasonService()
+);
+const IntanceSeason = new SeasonController(new SeasonService());
 // routes of users
 router.delete("/user/delete/:id", checkAdmin, (req, res, next) => {
   IntanceUser.deleteAUser(req, res);
@@ -36,6 +42,16 @@ router.get("/user/:id", (req, res, next) => {
 });
 router.get("/users", (req, res, next) => {
   IntanceUser.getUsers(req, res);
+});
+//routes of Seasons
+router.post("/season/register", checkAdmin, (req, res, next) => {
+  IntanceSeason.postSeason(req, res);
+});
+router.put("/season/edit/:id", checkAdmin, (req, res, next) => {
+  IntanceSeason.editSeason(req, res);
+});
+router.delete("/season/delete/:id", checkAdmin, (req, res, next) => {
+  IntanceSeason.deleteSeason(req, res);
 });
 // routes of movies
 router.delete("/movie/delete/:id", checkAdmin, (req, res, next) => {
@@ -67,5 +83,4 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 router.get("/", function (req, res, next) {
   res.send("welcome to an Api of Courflix");
 });
-
 module.exports = router;
